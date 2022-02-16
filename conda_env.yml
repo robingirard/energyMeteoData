@@ -1,0 +1,20 @@
+name : energyMeteoData
+dependencies :
+  - python
+  - geopandas
+  - scipy
+  - pytest
+  - tqdm
+  - matplotlib
+  - ipython
+  - pytables
+  - numba
+  - pip
+  - xarray
+  - pip:
+      - cdsapi
+      - progressbar
+      - wget
+      - py7zr
+      - topojson
+      - simplification
