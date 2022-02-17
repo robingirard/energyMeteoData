@@ -1,4 +1,5 @@
 
+
 #region imports and variable definitions
 import cdsapi
 import xarray as xr
@@ -32,29 +33,77 @@ all_year_mon=[
             '07', '08', '09',
             '10', '11', '12',
         ]
+output_folder = "D:\\Meteorological_data\\ECMWF\\input\\ERA5\\Europe\\"
 #endregion
-day='01'
-mon="01"
-time_of_day = '00:00'
-#'2m_temperature',     '10m_v_component_of_wind',      'surface_net_solar_radiation', 'surface_solar_radiation_downwards',
-year = 2020
-#see https://cds.climate.copernicus.eu/api-how-to
-c = cdsapi.Client()
-c.retrieve(
-    'reanalysis-era5-single-levels',
-    {
-        'product_type': 'reanalysis',
-        'format': 'netcdf',
-        'variable': [
-            '10m_u_component_of_wind','10m_v_component_of_wind'
-        ],
-        'year': str(year),
-        'month': all_year_mon,
-        'day': all_mon_days,
-        'time': all_day_times,
-        'area': Europe_area,
-    },
-    'energyMeteoData/data/ECMWF/era5_Wind_'+str(year)+'.nc')
+
+#region Wind download
+for year in range(2010,2021):
+    print(year)
+    #see https://cds.climate.copernicus.eu/api-how-to
+    c = cdsapi.Client()
+    c.retrieve(
+        'reanalysis-era5-single-levels',
+        {
+            'product_type': 'reanalysis',
+            'format': 'netcdf',
+            'variable': [
+                '10m_u_component_of_wind','10m_v_component_of_wind'
+            ],
+            'year': str(year),
+            'month': all_year_mon,
+            'day': all_mon_days,
+            'time': all_day_times,
+            'area': Europe_area,
+            "format": "netcdf"
+        },
+        output_folder+'era5_Wind_'+str(year)+'.nc')
+#endregion
+
+#region solar download
+for year in range(2010,2021):
+    print(year)
+    #see https://cds.climate.copernicus.eu/api-how-to
+    c = cdsapi.Client()
+    c.retrieve(
+        'reanalysis-era5-single-levels',
+        {
+            'product_type': 'reanalysis',
+            'format': 'netcdf',
+            'variable': [
+                 'surface_net_solar_radiation', 'surface_solar_radiation_downwards'
+            ],
+            'year': str(year),
+            'month': all_year_mon,
+            'day': all_mon_days,
+            'time': all_day_times,
+            'area': Europe_area,
+            "format": "netcdf"
+        },
+        output_folder+'era5_Solar_'+str(year)+'.nc')
+#endregion
+
+#region temperature download
+for year in range(2010,2021):
+    print(year)
+    #see https://cds.climate.copernicus.eu/api-how-to
+    c = cdsapi.Client()
+    c.retrieve(
+        'reanalysis-era5-single-levels',
+        {
+            'product_type': 'reanalysis',
+            'format': 'netcdf',
+            'variable': [
+                 '2m_temperature'
+            ],
+            'year': str(year),
+            'month': all_year_mon,
+            'day': all_mon_days,
+            'time': all_day_times,
+            'area': Europe_area,
+            "format": "netcdf"
+        },
+        output_folder+'era5_T2m_'+str(year)+'.nc')
+#endregion
 
 ds = xr.open_dataset('download.nc')
 df = ds.to_dataframe()
