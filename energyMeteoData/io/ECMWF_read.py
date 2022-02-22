@@ -1,5 +1,4 @@
 
-
 #region importations
 import xarray as xr
 import geopandas # mac had to use this https://github.com/conda-forge/shapely-feedstock/issues/53
@@ -7,17 +6,24 @@ import geopandas # mac had to use this https://github.com/conda-forge/shapely-fe
 #import rioxarray # useless ?
 import pandas as pd
 from os import path
+from pathlib import Path
+import sys
 
-if path.exists("local_config.py"):
+if path.exists(Path.home() / "local_config.py"):
+    sys.path.append(str(Path.home()))
     from local_config import My_local_config
     data_path_pathlib = My_local_config()
 else :
-    from pathlib import Path
-    My_data_path = Path().absolute() / 'energyMeteoData' / 'data'
-    data_path_pathlib = {
-        'base': My_data_path,
-        'ECMWF': My_data_path / "ECMWF"
-    }
+    if path.exists("local_config.py"):
+        from local_config import My_local_config
+        data_path_pathlib = My_local_config()
+    else:
+        from pathlib import Path
+        My_data_path = Path().absolute() / 'energyMeteoData' / 'data'
+        data_path_pathlib = {
+            'base': My_data_path,
+            'ECMWF': My_data_path / "ECMWF"
+        }
 #endregion
 
 #region function definition
