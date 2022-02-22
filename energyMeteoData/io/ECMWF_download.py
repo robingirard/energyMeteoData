@@ -1,8 +1,8 @@
 
-
+#https://cds.climate.copernicus.eu/cdsapp#!/yourrequests
 #region imports and variable definitions
 import cdsapi
-import xarray as xr
+
 Europe_area = [ 60, -10, 34, 30, ]
 all_day_times = [
             '00:00', '01:00', '02:00',
@@ -105,9 +105,6 @@ for year in range(2010,2021):
         output_folder+'era5_T2m_'+str(year)+'.nc')
 #endregion
 
-ds = xr.open_dataset('download.nc')
-df = ds.to_dataframe()
-df.columns=["Temperature"]
 
 
 
