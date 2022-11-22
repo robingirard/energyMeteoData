@@ -1,13 +1,16 @@
 
 #region importations
+import typing
 import xarray as xr
+import fiona
 import geopandas # mac had to use this https://github.com/conda-forge/shapely-feedstock/issues/53
 #print(geopandas.__version__)
-#import rioxarray # useless ?
+import rioxarray # useless ?
 import pandas as pd
 from os import path
 from pathlib import Path
 import sys
+
 
 if path.exists(Path.home() / "local_config.py"):
     sys.path.append(str(Path.home()))

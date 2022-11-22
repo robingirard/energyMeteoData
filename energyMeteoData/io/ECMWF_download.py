@@ -33,8 +33,10 @@ all_year_mon=[
             '07', '08', '09',
             '10', '11', '12',
         ]
-output_folder = "D:\\Meteorological_data\\ECMWF\\input\\ERA5\\Europe\\"
+#output_folder = "D:\\Meteorological_data\\ECMWF\\input\\ERA5\\Europe\\"
+output_folder = "C:\\Users\\kv6345\\Documents\\99-Data\\Meteorological_data\\ECMWF\\input\\ERA5\\Europe\\"
 #endregion
+
 
 #region Wind download
 for year in range(2010,2021):
