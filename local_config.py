@@ -5,22 +5,22 @@ from pathlib import Path
 import socket
 
 def My_local_config():
-    print('Local config of Robin')
+    print('Local config of Santiago')
 
     pd.options.display.width = 0
     pd.set_option('display.max_rows', 500)
     pd.set_option('display.max_columns', 500)
     pd.set_option('display.width', 1000)
 
-    if (socket.gethostname()=='ELMA-2.local'):
+    if (socket.gethostname()=='Santiagos-MacBook-Pro.local'):
         My_data_path = Path().absolute() /'..' / 'input'
 
     data_path_pathlib ={
         'base' : My_data_path,
-        'ECMWF' : My_data_path / "ECMWF",
-        'Europe' : Path("/Users") /"robin.girard"/"Documents"/"Code"/"Data"/"Maps"/"Europe",
-        'France' : Path("/Users") /"robin.girard"/"Documents"/"Code"/"Data"/"Maps"/"France"
-        "renewable.ninja"
+        'ECMWF' : My_data_path / "ECMWF"
+        #'Europe' : Path("/Users") /"robin.girard"/"Documents"/"Code"/"Data"/"Maps"/"Europe",
+        #'France' : Path("/Users") /"robin.girard"/"Documents"/"Code"/"Data"/"Maps"/"France"
+        #"renewable.ninja"
     }
 
     return data_path_pathlib

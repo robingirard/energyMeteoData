@@ -10,6 +10,5 @@ dependencies :
   - numba
   - pip
   - xarray
-  - cdsapi
   - pip:
       - cdsapi

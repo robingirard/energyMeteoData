@@ -3,7 +3,7 @@
 #region imports and variable definitions
 import cdsapi
 
-Europe_area = [ 60, -10, 34, 30, ]
+Europe_area = [ 60, -10, 34, 30, ]#latitud et longitude min et max
 all_day_times = [
             '00:00', '01:00', '02:00',
             '03:00', '04:00', '05:00',
@@ -34,7 +34,8 @@ all_year_mon=[
             '10', '11', '12',
         ]
 #output_folder = "D:\\Meteorological_data\\ECMWF\\input\\ERA5\\Europe\\"
-output_folder = "C:\\Users\\kv6345\\Documents\\99-Data\\Meteorological_data\\ECMWF\\input\\ERA5\\Europe\\"
+#output_folder = "C:\\Users\\kv6345\\Documents\\99-Data\\Meteorological_data\\ECMWF\\input\\ERA5\\Europe\\"
+output_folder = "/Users/sant/Documents/MINES PARIS/2A/T2/Recherche Simulation de Production éolienne/Github/energyMeteoData-MASTER"
 #endregion
 
 
