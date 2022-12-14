@@ -35,12 +35,12 @@ all_year_mon=[
         ]
 #output_folder = "D:\\Meteorological_data\\ECMWF\\input\\ERA5\\Europe\\"
 #output_folder = "C:\\Users\\kv6345\\Documents\\99-Data\\Meteorological_data\\ECMWF\\input\\ERA5\\Europe\\"
-output_folder = "/Users/sant/Documents/MINES PARIS/2A/T2/Recherche Simulation de Production éolienne/Github/energyMeteoData-MASTER"
+output_folder = "/Users/sant/Documents/MINES PARIS/2A/T2/Recherche Simulation de Production éolienne/Github/Data/"
 #endregion
 
 
-#region Wind download
-for year in range(2010,2021):
+#region Wind download ERA5
+for year in range(2018-2019):
     print(year)
     #see https://cds.climate.copernicus.eu/api-how-to
     c = cdsapi.Client()
@@ -50,7 +50,7 @@ for year in range(2010,2021):
             'product_type': 'reanalysis',
             'format': 'netcdf',
             'variable': [
-                '10m_u_component_of_wind','10m_v_component_of_wind'
+                '100m_u_component_of_wind','100m_v_component_of_wind'
             ],
             'year': str(year),
             'month': all_year_mon,
@@ -61,6 +61,47 @@ for year in range(2010,2021):
         },
         output_folder+'era5_Wind_'+str(year)+'.nc')
 #endregion
+
+#region Wind download CERRA
+c = cdsapi.Client()
+
+c.retrieve(
+    'reanalysis-cerra-height-levels',
+    {
+        'variable': 'wind_speed',
+        'height_level': '150_m',
+        'data_type': 'reanalysis',
+        'product_type': 'analysis',
+        'year': str(2013),
+        'month': [
+            '01', '02', '03',
+            '04', '05', '06',
+            '07', '08', '09',
+            '10', '11', '12',
+        ],
+        'day': [
+            '01', '02', '03',
+            '04', '05', '06',
+            '07', '08', '09',
+            '10', '11', '12',
+            '13', '14', '15',
+            '16', '17', '18',
+            '19', '20', '21',
+            '22', '23', '24',
+            '25', '26', '27',
+            '28', '29', '30',
+            '31',
+        ],
+        'time': [
+            '00:00', '03:00', '06:00',
+            '09:00', '12:00', '15:00',
+            '18:00', '21:00',
+        ],
+        'format': 'netcdf',
+    },
+    output_folder+'CERRA_Wind_'+str(2013)+'.nc')
+#endregion
+
 
 #region solar download
 for year in range(2010,2021):

@@ -17,8 +17,9 @@ def My_local_config():
 
     data_path_pathlib ={
         'base' : My_data_path,
-        'ECMWF' : My_data_path / "ECMWF"
-        #'Europe' : Path("/Users") /"robin.girard"/"Documents"/"Code"/"Data"/"Maps"/"Europe",
+        'ECMWF' : Path("/Users") /"sant"/"Documents"/"MINES PARIS"/"2A"/"T2"/"Recherche Simulation de Production éolienne"/"Github"/"Data"/ "Données ECMWF nc",
+        'Europe' : Path("/Users") /"sant"/"Documents"/"MINES PARIS"/"2A"/"T2"/"Recherche Simulation de Production éolienne"/"Github"/"Data"/"Europe",
+
         #'France' : Path("/Users") /"robin.girard"/"Documents"/"Code"/"Data"/"Maps"/"France"
         #"renewable.ninja"
     }
